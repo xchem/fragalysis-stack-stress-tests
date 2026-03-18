@@ -19,9 +19,7 @@ def download(
         int, typer.Argument(help="Number of concurrent processes")
     ] = 1,
     tas: Annotated[str, typer.Argument(help="A Target Access String")] = "lb32627-66",
-    target: Annotated[
-        str, typer.Argument(help="The name of the user to greet")
-    ] = "A71EV2A",
+    target: Annotated[str, typer.Argument(help="The name of the Target")] = "A71EV2A",
     stack: Annotated[
         str, typer.Argument(help="An optional stack identity")
     ] = "staging",
