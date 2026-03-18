@@ -10,24 +10,17 @@
 # over long periods of time in order to try and identify a pattern
 # (if any) where downloads would 'slow down'.
 
-cmd="./download_target_stress_test.py --tas lb32627-66"
+cmd="uv run main.py lb32627-66"
 log="keep-downloading.log"
 delay="45m"
 
 download=1
 while true
 do
-  echo $(date '+%Y-%m-%d %H:%M') Download: ${download}
-  $cmd
-  echo $(date '+%Y-%m-%d %H:%M') Sleeping ${delay} ...
+  echo $(date '+%Y-%m-%d %H:%M') Download: ${download} >> ${log}
+  $cmd >> ${log} 2>&1
+  echo $(date '+%Y-%m-%d %H:%M') Sleeping ${delay} ... >> ${log}
   sleep ${delay}
-  echo ---
+  echo --- >> ${log}
   ((download++))
 done
-
-#  echo $(date '+%Y-%m-%d %H:%M') Download: ${download} >> ${log}
-#  $cmd >> ${log} 2>&1
-#  echo $(date '+%Y-%m-%d %H:%M') Sleeping ${delay} ... >> ${log}
-#  sleep ${delay}
-#  echo --- >> ${log}
-#  ((download++))
