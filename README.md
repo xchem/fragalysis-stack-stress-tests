@@ -1,4 +1,7 @@
 # Fragalysis stack stress testing
+
+[![Test](https://github.com/xchem/fragalysis-stack-stress-tests/actions/workflows/test.yaml/badge.svg)](https://github.com/xchem/fragalysis-stack-stress-tests/actions/workflows/test.yaml)
+
 Python utilities to stress-test a Fragalysis Stack.
 
 The repository code is managed by [uv].
