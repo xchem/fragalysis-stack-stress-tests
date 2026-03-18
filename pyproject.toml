@@ -1,13 +1,33 @@
 [project]
 name = "xchem-fragalysis-stack-stress-tests"
 description = "Utilities for Fragalysis Stack stress-testing"
+authors = [
+    {name = "Alan Christie", email = "achristie@informaticsmatters.com"},
+]
+maintainers = [
+    {name = "Alan Christie", email = "achristie@informaticsmatters.com"},
+]
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.13"
 dependencies = [
     "typer>=0.24.1",
     "xchem-fragalysis>=1.2.0,<2",
 ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
 dynamic = ["version"]
+
+[project.urls]
+Repository = "https://github.com/xchem/fragalysis-stack-stress-tests.git"
 
 [dependency-groups]
 dev = [
