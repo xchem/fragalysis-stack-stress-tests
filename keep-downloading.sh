@@ -2,7 +2,7 @@
 #
 # Usage: ./keep-downloading.sh
 #
-# A script that keeps calling 'download_target_stress_test.py',
+# A script that keeps calling 'main.py',
 # pausing for 45 minutes between each attempt.
 # The output is written (appended) to 'keep-downloading.log'.
 #
