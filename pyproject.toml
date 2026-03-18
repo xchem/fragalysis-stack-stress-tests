@@ -1,0 +1,13 @@
+[project]
+name = "xchem-fragalysis-stack-stress-tests"
+version = "0.0.0"
+description = "Utilities for Fragalysis Stack stress-testing"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "typer>=0.24.1",
+    "xchem-fragalysis>=1.2.0,<2",
+]
+
+[tool.uv]
+package = false
