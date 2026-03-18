@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: Test
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
     tags-ignore:
     - '**'
   schedule:
-  # Build daily at 6:08am...
   - cron: '8 6 * * *'
 
 jobs:
@@ -30,3 +29,5 @@ jobs:
       run: pip install uv
     - name: Lint
       run: uv run pre-commit run --all-files
+    - name: Help
+      run: uv run main.py --help
