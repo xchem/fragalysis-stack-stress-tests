@@ -40,3 +40,17 @@ repos:
     args:
     - --fix
   - id: ruff-format
+
+# ty type checker.
+# Astral's ty is still in pre-release but it's fast (and appears good).
+# They don't currently support pre-commit but have suggested that
+# it can run locally. The following reproduces what we see by running (ty check).
+# Inspired by https://github.com/astral-sh/ty/issues/269
+- repo: local
+  hooks:
+  - id: ty-check
+    name: ty check
+    entry: uv run ty check
+    language: system
+    pass_filenames: false
+    always_run: true
