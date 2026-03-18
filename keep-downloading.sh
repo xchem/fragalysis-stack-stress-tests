@@ -10,7 +10,7 @@
 # over long periods of time in order to try and identify a pattern
 # (if any) where downloads would 'slow down'.
 
-cmd="uv run main.py lb32627-66"
+cmd="uv run main.py"
 log="keep-downloading.log"
 delay="45m"
 

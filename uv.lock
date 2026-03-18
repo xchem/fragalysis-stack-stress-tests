@@ -1443,6 +1443,21 @@ wheels = [
 ]
 
 [[package]]
+name = "xchem-fragalysis-stack-stress-tests"
+version = "0.0.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "typer" },
+    { name = "xchem-fragalysis" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "typer", specifier = ">=0.24.1" },
+    { name = "xchem-fragalysis", specifier = ">=1.2.0,<2" },
+]
+
+[[package]]
 name = "xchem-molparse"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1460,19 +1475,4 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/ce/4a/0860f7ff079a7595ebcd38d27188b8718bddb22cec0cdb673e4dfb774098/xchem_molparse-1.0.0.tar.gz", hash = "sha256:d692a4f4ae59789044693269449b7b81875fc62e23111c7c71666e0d29c32473", size = 145004, upload-time = "2026-03-06T18:14:21.854Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/76/d2/7542e0c145337d8c494f2b4ebdaa0cba83592d20c3b525ca460163094af4/xchem_molparse-1.0.0-py3-none-any.whl", hash = "sha256:d15bb40acd4d2330e3ce21b6925db35ccf7443a27a55ecd5f06384890cb2a48c", size = 176321, upload-time = "2026-03-06T18:14:19.67Z" },
-]
-
-[[package]]
-name = "xchem-stress"
-version = "0.0.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "typer" },
-    { name = "xchem-fragalysis" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "typer", specifier = ">=0.24.1" },
-    { name = "xchem-fragalysis", specifier = ">=1.2.0,<2" },
 ]
