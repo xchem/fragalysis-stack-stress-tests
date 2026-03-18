@@ -9,5 +9,10 @@ dependencies = [
     "xchem-fragalysis>=1.2.0,<2",
 ]
 
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+]
+
 [tool.uv]
 package = false
