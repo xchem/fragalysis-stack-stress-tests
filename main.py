@@ -12,13 +12,22 @@ import typer
 
 app = typer.Typer()
 
+
 @app.command()
 def download(
-    tas: Annotated[str, typer.Argument(help="A Target Access String")],
-    concurrency: Annotated[int, typer.Argument(help="Number of concurrent processes")] = 1,
-    target: Annotated[str, typer.Argument(help="The name of the user to greet")] = "A71EV2A",
-    stack: Annotated[str, typer.Argument(help="An optional stack identity")] = "staging",
-    download_root: Annotated[str, typer.Argument(help="The root download directory")] = "/tmp/xchem-stress",
+    concurrency: Annotated[
+        int, typer.Argument(help="Number of concurrent processes")
+    ] = 1,
+    tas: Annotated[str, typer.Argument(help="A Target Access String")] = "lb32627-66",
+    target: Annotated[
+        str, typer.Argument(help="The name of the user to greet")
+    ] = "A71EV2A",
+    stack: Annotated[
+        str, typer.Argument(help="An optional stack identity")
+    ] = "staging",
+    download_root: Annotated[
+        str, typer.Argument(help="The root download directory")
+    ] = "/tmp/xchem-stress",
 ) -> None:
     """Download target stress testing
 
@@ -35,7 +44,6 @@ def download(
     processes: list[Process] = []
 
     for c in range(concurrency):
-
         iteration: int = c + 1
 
         # We need to wipe (and recreate) each target download directory
@@ -61,6 +69,7 @@ def download(
     now: datetime.datetime = datetime.datetime.now()
     elapsed_s: int = int(time.time() - start_time_s)
     print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
+
 
 if __name__ == "__main__":
     app()
