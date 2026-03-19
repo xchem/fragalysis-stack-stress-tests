@@ -4,11 +4,15 @@
 
 Python utilities to stress-test a Fragalysis Stack.
 
-The repository code is managed by [uv].
+The repository code is managed by [uv]. Once you've cloned the repository,
+if you don't have [uv], install it into your system Python: -
 
-Before you start, if you are intending to contribute to the code,
-you will need to install the pre-commit hooks and verify they run successfully
-against the current code: -
+    pip install uv
+
+If you are intending to contribute to the code, you will need to install
+the pre-commit hooks and verify they run successfully against the current code.
+Even if you're not intending to contribute to the code installing the hooks is a good
+idea anyway: -
 
     uv run pre-commit install -t commit-msg -t pre-commit
     uv run pre-commit run --all-files
