@@ -10,7 +10,9 @@ from typing import Annotated
 from fragalysis.requests.download import download_target
 import typer
 
-app = typer.Typer()
+CONCURRENT_TASK_START_DELAY_S: int = 4
+
+app: typer.Typer = typer.Typer()
 
 
 @app.command()
@@ -35,6 +37,11 @@ def download(
     designated download root with the value of the
     concurrency number (i.e. 01, 02, 03)"""
 
+    now: datetime.datetime = datetime.datetime.now()
+    print(
+        f"{now.strftime('%Y-%m-%d %H:%M')} Starting download (concurrency={concurrency})..."
+    )
+
     # Run each download (to a separate local destination)
     # as a concurrent set of (parallel) processes.
 
@@ -55,16 +62,16 @@ def download(
         process = Process(
             target=download_target,
             args=(target, tas, stack),
-            kwargs={"destination": destination, "debug": True},
+            kwargs={"destination": destination, "debug": True, "iteration": iteration},
         )
         process.start()
         processes.append(process)
 
-    # Wait for each process
+    # Wait until all downloads are done...
     for p in processes:
         p.join()
 
-    now: datetime.datetime = datetime.datetime.now()
+    now = datetime.datetime.now()
     elapsed_s: int = int(time.time() - start_time_s)
     print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
 
