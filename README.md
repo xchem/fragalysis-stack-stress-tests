@@ -28,6 +28,11 @@ initiates a download of `A71EV2A` from the staging stack, writing it to
 
     uv run main.py
 
+You can display progressive download status information by adding `--verbose` and
+even debug the underlying requests (which use the urllib3 module) with `--debug`: -
+
+    uv run main.py --verbose --debug
+
 ---
 
 [uv]: https://docs.astral.sh/uv/

@@ -23,11 +23,24 @@ def download(
     tas: Annotated[str, typer.Argument(help="A Target Access String")] = "lb32627-66",
     target: Annotated[str, typer.Argument(help="The name of the Target")] = "A71EV2A",
     stack: Annotated[
-        str, typer.Argument(help="An optional stack identity")
+        str,
+        typer.Argument(
+            help="An optional built-in stack identity ('staging' or 'production') or a URL"
+        ),
     ] = "staging",
     download_root: Annotated[
         str, typer.Argument(help="The root download directory")
     ] = "/tmp/xchem-stress",
+    debug: Annotated[
+        bool,
+        typer.Option(
+            "--debug",
+            help="Debug underlying HTTP requests. This can generate a lot of output",
+        ),
+    ] = False,
+    verbose: Annotated[
+        bool, typer.Option("--verbose", help="Add additional download log")
+    ] = False,
 ) -> None:
     """Download target stress testing
 
@@ -38,9 +51,10 @@ def download(
     concurrency number (i.e. 01, 02, 03)"""
 
     now: datetime.datetime = datetime.datetime.now()
-    print(
-        f"{now.strftime('%Y-%m-%d %H:%M')} Starting download (concurrency={concurrency})..."
-    )
+    if verbose:
+        print(
+            f"{now.strftime('%Y-%m-%d %H:%M')} Starting download (concurrency={concurrency})..."
+        )
 
     # Run each download (to a separate local destination)
     # as a concurrent set of (parallel) processes.
@@ -62,7 +76,12 @@ def download(
         process = Process(
             target=download_target,
             args=(target, tas, stack),
-            kwargs={"destination": destination, "debug": True, "iteration": iteration},
+            kwargs={
+                "destination": destination,
+                "debug": verbose,
+                "iteration": iteration,
+                "debug_requests": debug,
+            },
         )
         process.start()
         processes.append(process)
@@ -71,9 +90,10 @@ def download(
     for p in processes:
         p.join()
 
-    now = datetime.datetime.now()
-    elapsed_s: int = int(time.time() - start_time_s)
-    print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
+    if verbose:
+        now = datetime.datetime.now()
+        elapsed_s: int = int(time.time() - start_time_s)
+        print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
 
 
 if __name__ == "__main__":
