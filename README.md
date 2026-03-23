@@ -33,6 +33,15 @@ even debug the underlying requests (which use the urllib3 module) with `--debug`
 
     uv run main.py --verbose --debug
 
+## Controlling the 'fancy stuff'
+Some of the underlying logic (in fragalysis) uses the [rich] library for rich text
+and formatting in the terminal. The output of some of the stress-tests can look
+confusing when rich is also used. To disable progress reporting (which uses a lot of
+complex control-codes) you can set `TTY_INTERACTIVE=0` when running a test, e.g.: -
+
+    TTY_INTERACTIVE=0 uv run main.py --verbose
+
 ---
 
+[rich]: https://pypi.org/project/rich/
 [uv]: https://docs.astral.sh/uv/
