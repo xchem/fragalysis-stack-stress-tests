@@ -51,10 +51,9 @@ def download(
     concurrency number (i.e. 01, 02, 03)"""
 
     now: datetime.datetime = datetime.datetime.now()
-    if verbose:
-        print(
-            f"{now.strftime('%Y-%m-%d %H:%M')} Starting download (concurrency={concurrency})..."
-        )
+    print(
+        f"{now.strftime('%Y-%m-%d %H:%M')} Starting download (concurrency={concurrency} stack={stack})..."
+    )
 
     # Run each download (to a separate local destination)
     # as a concurrent set of (parallel) processes.
@@ -90,10 +89,9 @@ def download(
     for p in processes:
         p.join()
 
-    if verbose:
-        now = datetime.datetime.now()
-        elapsed_s: int = int(time.time() - start_time_s)
-        print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
+    now = datetime.datetime.now()
+    elapsed_s: int = int(time.time() - start_time_s)
+    print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
 
 
 if __name__ == "__main__":
