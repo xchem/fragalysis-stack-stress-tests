@@ -23,15 +23,15 @@ see what can be done: -
     uv run main.py --help
 
 Then, maybe, run something like the following, which (at the time of writing)
-initiates a download of `A71EV2A` from the staging stack, writing it to
+initiates a four downloads of `A71EV2A` from the staging stack, writing it to
 `/tmp/xchem-stress/01/A71EV2A.tar.gz`: -
 
-    uv run main.py
+    uv run main.py 4
 
 You can display progressive download status information by adding `--verbose` and
 even debug the underlying requests (which use the urllib3 module) with `--debug`: -
 
-    uv run main.py --verbose --debug
+    uv run main.py 4 --verbose --debug
 
 ## Controlling the 'fancy stuff'
 Some of the underlying logic (in fragalysis) uses the [rich] library for rich text
@@ -41,7 +41,7 @@ confusing when it's logging is interleaved with rich.
 To disable _pretty_ things like progress reporting you can set `TTY_INTERACTIVE=0`
 when running a test, e.g.: -
 
-    TTY_INTERACTIVE=0 uv run main.py --verbose
+    TTY_INTERACTIVE=0 uv run main.py 4 --verbose
 
 ---
 
