@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 #
-# Usage: ./keep-downloading.sh
+# Usage: nohup ./keep-downloading.sh &
 #
-# A script that keeps calling 'main.py',
-# pausing for 45 minutes between each attempt.
+# A script that keeps calling 'main.py' sith 4 downloads,
+# pausing for 15 minutes between each attempt.
 # The output is written (appended) to 'keep-downloading.log'.
 #
 # This was designed for #1978 to investigate download speeds
 # over long periods of time in order to try and identify a pattern
 # (if any) where downloads would 'slow down'.
 
-cmd="uv run main.py"
+cmd="uv run main.py 4"
 log="keep-downloading.log"
-delay="45m"
+delay="15m"
 
 download=1
 while true

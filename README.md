@@ -33,18 +33,6 @@ even debug the underlying requests (which use the urllib3 module) with `--debug`
 
     uv run main.py 4 --verbose --debug
 
-To run the stress tests from an Amazon Linux machine you have to first install
-`python` and `pip`, the following commands should be all you need to get stuff installed
-and to run a stress-test...
-
-    sudo yum update -y
-    sudo yum install git python python-pip -y
-    git clone https://github.com/xchem/fragalysis-stack-stress-tests
-    cd fragalysis-stack-stress-tests
-    pip install uv
-
-    TTY_INTERACTIVE=0 uv run main.py 4 --verbose
-
 ## Controlling the 'fancy stuff'
 Some of the underlying logic (in fragalysis) uses the [rich] library for rich text
 and formatting in the terminal. The output of some of the stress-tests can look
@@ -58,6 +46,20 @@ when running a test, e.g.: -
 >   The number of concurrent downloads might be limited because of your client's
     processing capability - if you're on a 4 core machine do not expect the best
     performance when trying to download 12 concurrent copies of a given target.
+
+## Continuous stress tests
+To continually run the stress tests from an Amazon Linux machine you have to first install
+`python` and `pip`, the following commands should be all you need to get stuff installed
+and to run a stress-test...
+
+    sudo yum update -y
+    sudo yum install git python python-pip -y
+    git clone https://github.com/xchem/fragalysis-stack-stress-tests
+    cd fragalysis-stack-stress-tests
+    pip install uv
+
+    export TTY_INTERACTIVE=0
+    nohup ./keep-downloading.sh &
 
 ---
 
