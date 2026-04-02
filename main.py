@@ -30,7 +30,7 @@ def download(
     ] = "staging",
     download_root: Annotated[
         str, typer.Argument(help="The root download directory")
-    ] = "/tmp/xchem-stress",
+    ] = "./tmp",
     debug: Annotated[
         bool,
         typer.Option(
