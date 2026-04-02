@@ -48,9 +48,9 @@ when running a test, e.g.: -
     performance when trying to download 12 concurrent copies of a given target.
 
 ## Continuous stress tests
-To continually run the stress tests from an Amazon Linux machine you have to first install
-`python` and `pip`, the following commands should be all you need to get stuff installed
-and to run a stress-test...
+To continually run the stress tests (from an Amazon Linux machine) you might have to
+install `python` and `pip`. The following commands should be sufficient to get stuff
+ready to run a stress-test...
 
     sudo yum update -y
     sudo yum install git python python-pip -y
@@ -58,8 +58,14 @@ and to run a stress-test...
     cd fragalysis-stack-stress-tests
     pip install uv
 
+Then, you can continually run the default test...
+
     export TTY_INTERACTIVE=0
     nohup ./keep-downloading.sh &
+
+>   You will need to make sure your local volume has sufficient space to accommodate
+    all the downloads you plan to test. A single copy of the default (`A71EV2A`),
+    which the download decompresses, will consume about **1.8G** of disk space.
 
 ---
 
