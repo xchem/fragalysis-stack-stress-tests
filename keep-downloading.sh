@@ -17,7 +17,7 @@ delay="8m"
 # The default download directory.
 # Be VERY careful - we wipe it so it MUST be local.
 # This is not completely safe but it must start with '.'.
-download_directory="/tmp"
+download_directory="./tmp"
 
 if  [[ ! $download_directory == .* ]] ;
 then
