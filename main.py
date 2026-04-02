@@ -76,9 +76,24 @@ def download(
             target=download_target,
             args=(target, tas, stack),
             kwargs={
+                # Include all the "big" stuff...
+                "soakdb_files": True,
+                "unaligned_pdbs": True,
+                "ligand_cifs": True,
+                "event_maps": True,
+                "inspection_maps": True,
+                "residual_maps": True,
+                "real_space_maps": True,
+                "transformation_files": True,
+                "reflections_files": True,
+                # Don't extract the download
+                "extract": False,
+                # Download destination
                 "destination": destination,
+                # Verbose? And the iteration number (for logging)
                 "debug": verbose,
                 "iteration": iteration,
+                # Request debugging?
                 "debug_requests": debug,
             },
         )
