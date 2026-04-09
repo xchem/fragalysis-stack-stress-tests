@@ -11,7 +11,7 @@
 # over long periods of time in order to try and identify a pattern
 # (if any) where downloads would 'slow down'.
 
-cmd="uv run main.py 4 --verbose"
+cmd="uv run main.py 8 lb32627-66 A71EV2A production --verbose"
 log="keep-downloading.log"
 delay="8m"
 # The default download directory.
