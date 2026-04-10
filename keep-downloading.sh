@@ -7,6 +7,9 @@
 # Messages are written (appended) to 'keep-downloading.log'
 # and the downloads written to './tmp' (which is wiped before each run).
 #
+# By synchronising the start of the download to the next quarter-hour
+# we do our best to align downloads across multiple machines.
+#
 # This was designed for #1978 to investigate download speeds
 # over long periods of time in order to try and identify a pattern
 # (if any) where downloads would 'slow down'.
