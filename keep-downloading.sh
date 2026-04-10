@@ -38,8 +38,8 @@ sleep_until_next_quarter_hour() {
   secs_past_quarter=$(( (now_min % 15) * 60 + now_sec ))
   secs_to_wait=$(( 15 * 60 - secs_past_quarter ))
   local next_quarter
-  next_quarter=$(date -v +${secs_to_wait}S '+%H:%M')
-  echo $(date '+%Y-%m-%d %H:%M') Waiting ${secs_to_wait}s until next quarter-hour \(${next_quarter}\) ... >> ${log}
+  next_quarter=$(date -d "+${secs_to_wait} seconds" '+%H:%M' 2>/dev/null || date -v +${secs_to_wait}S '+%H:%M')
+  echo $(date '+%Y-%m-%d %H:%M') Waiting until next quarter-hour \(${next_quarter}\) ... >> ${log}
   sleep ${secs_to_wait}
 }
 
