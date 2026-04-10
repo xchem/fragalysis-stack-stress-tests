@@ -3,7 +3,7 @@
 # Usage: nohup ./keep-downloading.sh &
 #
 # A script that keeps calling 'main.py' sith 4 downloads,
-# pausing for 8 minutes between each attempt.
+# waiting until the next quarter-hour between each attempt.
 # Messages are written (appended) to 'keep-downloading.log'
 # and the downloads written to './tmp' (which is wiped before each run).
 #
@@ -13,8 +13,7 @@
 
 cmd="uv run main.py 8 lb32627-66 A71EV2A production --verbose"
 log="keep-downloading.log"
-delay="8m"
-# The default download directory.
+# The default download directory.
 # Be VERY careful - we wipe it so it MUST be local.
 # This is not completely safe but it must start with '.'.
 download_directory="./tmp"
@@ -25,15 +24,28 @@ then
     exit 1
 fi
 
+# Sleep until the next quarter-hour boundary (00, 15, 30, or 45 minutes past).
+sleep_until_next_quarter_hour() {
+  local now_min now_sec secs_past_quarter secs_to_wait
+  now_min=$(date +%-M)
+  now_sec=$(date +%-S)
+  secs_past_quarter=$(( (now_min % 15) * 60 + now_sec ))
+  secs_to_wait=$(( 15 * 60 - secs_past_quarter ))
+  local next_quarter
+  next_quarter=$(date -v +${secs_to_wait}S '+%H:%M')
+  echo $(date '+%Y-%m-%d %H:%M') Waiting ${secs_to_wait}s until next quarter-hour \(${next_quarter}\) ... >> ${log}
+  sleep ${secs_to_wait}
+}
+
 download=1
+sleep_until_next_quarter_hour
 while true
 do
-  echo $(date '+%Y-%m-%d %H:%M') Wiping: ${dst}
+  echo $(date '+%Y-%m-%d %H:%M') Wiping: ${download_directory}
   rm -rf ${download_directory}
   echo $(date '+%Y-%m-%d %H:%M') Downloading: ${download} >> ${log}
   $cmd >> ${log} 2>&1
-  echo $(date '+%Y-%m-%d %H:%M') Sleeping ${delay} ... >> ${log}
-  sleep ${delay}
+  sleep_until_next_quarter_hour
   echo --- >> ${log}
   ((download++))
 done
