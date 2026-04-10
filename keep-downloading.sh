@@ -2,13 +2,13 @@
 #
 # Usage: nohup ./keep-downloading.sh &
 #
-# A script that keeps calling 'main.py' sith 4 downloads,
-# waiting until the next quarter-hour between each attempt.
+# A script that keeps calling 'main.py' with 8 downloads,
+# waiting until the next 20-minute boundary between each attempt.
 # Messages are written (appended) to 'keep-downloading.log'
 # and the downloads written to './tmp' (which is wiped before each run).
 #
-# By synchronising the start of the download to the next quarter-hour
-# we do our best to align downloads across multiple machines.
+# By waiting until the start of the download to the next period
+# we do our best to synchronise downloads across multiple machines.
 #
 # This was designed for #1978 to investigate download speeds
 # over long periods of time in order to try and identify a pattern
@@ -30,28 +30,28 @@ then
     exit 1
 fi
 
-# Sleep until the next quarter-hour boundary (00, 15, 30, or 45 minutes past).
-sleep_until_next_quarter_hour() {
-  local now_min now_sec secs_past_quarter secs_to_wait
+# Sleep until the next 20-minute boundary (00, 20, or 40 minutes past).
+sleep_until_next_20_minutes() {
+  local now_min now_sec secs_past_period secs_to_wait
   now_min=$(date +%-M)
   now_sec=$(date +%-S)
-  secs_past_quarter=$(( (now_min % 15) * 60 + now_sec ))
-  secs_to_wait=$(( 15 * 60 - secs_past_quarter ))
-  local next_quarter
-  next_quarter=$(date -d "+${secs_to_wait} seconds" '+%H:%M' 2>/dev/null || date -v +${secs_to_wait}S '+%H:%M')
-  echo $(date '+%Y-%m-%d %H:%M') Waiting until next quarter-hour \(${next_quarter}\) ... >> ${log}
+  secs_past_period=$(( (now_min % 20) * 60 + now_sec ))
+  secs_to_wait=$(( 20 * 60 - secs_past_period ))
+  local next_period
+  next_period=$(date -d "+${secs_to_wait} seconds" '+%H:%M' 2>/dev/null || date -v +${secs_to_wait}S '+%H:%M')
+  echo $(date '+%Y-%m-%d %H:%M') Waiting until \(${next_period}\) ... >> ${log}
   sleep ${secs_to_wait}
 }
 
 download=1
-sleep_until_next_quarter_hour
+sleep_until_next_20_minutes
 while true
 do
   echo $(date '+%Y-%m-%d %H:%M') Wiping ${download_directory} >> ${log}
   rm -rf ${download_directory}
   echo $(date '+%Y-%m-%d %H:%M') Starting download iteration ${download} >> ${log}
   $cmd >> ${log} 2>&1
-  sleep_until_next_quarter_hour
+  sleep_until_next_20_minutes
   echo --- >> ${log}
   ((download++))
 done

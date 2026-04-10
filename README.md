@@ -48,6 +48,11 @@ when running a test, e.g.: -
     performance when trying to download 12 concurrent copies of a given target.
 
 ## Continuous stress tests
+A script that calls the main application repeatedly can be found in
+`keep-downloading.sh`. This downloads 8 copies the default target
+(from the production stack), starting each new download on the next 20-minute
+boundary (i.e. at 00, 20 or 40 past the hour).
+
 To continually run the stress tests (from an Amazon Linux machine) you might have to
 install `python` and `pip`. The following commands should be sufficient to get stuff
 ready to run a stress-test...
