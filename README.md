@@ -57,15 +57,20 @@ ready to run a stress-test...
     git clone https://github.com/xchem/fragalysis-stack-stress-tests
     cd fragalysis-stack-stress-tests
     pip install uv
+    uv sync
 
-Then, you can continually run the default test...
+Then, you can continually run the default test (downloading 8 copies)...
 
     export TTY_INTERACTIVE=0
     nohup ./keep-downloading.sh &
 
+And watch the output with: -
+
+    tail -f keep-downloading.log
+
 >   You will need to make sure your local volume has sufficient space to accommodate
     all the downloads you plan to test. A single copy of the default (`A71EV2A`),
-    which the download decompresses, will consume about **1.8G** of disk space.
+    which the download decompresses, will consume about **3.8G** of disk space.
 
 ---
 

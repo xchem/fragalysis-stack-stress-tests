@@ -13,3 +13,4 @@ wheels/
 
 # Our stuff
 *.log
+nohup.out
