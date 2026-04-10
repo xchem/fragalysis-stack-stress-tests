@@ -13,8 +13,11 @@
 # This was designed for #1978 to investigate download speeds
 # over long periods of time in order to try and identify a pattern
 # (if any) where downloads would 'slow down'.
+#
+# You can add --verbose to the command to see task status change messages
+# You can add --debug to see request/response debug (a lot of output is generated)
 
-cmd="uv run main.py 8 lb32627-66 A71EV2A production --verbose"
+cmd="uv run main.py 8 lb32627-66 A71EV2A production"
 log="keep-downloading.log"
 # The default download directory.
 # Be VERY careful - we wipe it so it MUST be local.
