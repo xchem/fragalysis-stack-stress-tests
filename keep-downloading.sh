@@ -47,9 +47,9 @@ download=1
 sleep_until_next_quarter_hour
 while true
 do
-  echo $(date '+%Y-%m-%d %H:%M') Wiping: ${download_directory} >> ${log}
+  echo $(date '+%Y-%m-%d %H:%M') Wiping ${download_directory} >> ${log}
   rm -rf ${download_directory}
-  echo $(date '+%Y-%m-%d %H:%M') Downloading: ${download} >> ${log}
+  echo $(date '+%Y-%m-%d %H:%M') Starting download iteration ${download} >> ${log}
   $cmd >> ${log} 2>&1
   sleep_until_next_quarter_hour
   echo --- >> ${log}
