@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# Usage: nohup ./keep-downloading.sh &
+# Usage: nohup ./keep-downloading.sh [concurrency] &
 #
-# A script that keeps calling 'main.py' with 8 downloads,
+# A script that keeps calling 'main.py' with 8 (default) downloads,
 # waiting until the next 20-minute boundary between each attempt.
 # Messages are written (appended) to 'keep-downloading.log'
 # and the downloads written to './tmp' (which is wiped before each run).
@@ -17,7 +17,8 @@
 # You can add --verbose to the command to see task status change messages
 # You can add --debug to see request/response debug (a lot of output is generated)
 
-cmd="uv run main.py 8 lb32627-66 A71EV2A production"
+concurrency="${1:-8}"
+cmd="uv run main.py ${concurrency} lb32627-66 A71EV2A production"
 log="keep-downloading.log"
 # The default download directory.
 # Be VERY careful - we wipe it so it MUST be local.
