@@ -64,10 +64,10 @@ ready to run a stress-test...
     pip install uv
     uv sync
 
-Then, you can continually run the default test (downloading 8 copies)...
+Then, you can continually run the default test (downloading 16 copies concurrently)...
 
     export TTY_INTERACTIVE=0
-    nohup ./keep-downloading.sh &
+    nohup ./keep-downloading.sh 16 &
 
 And watch the output with: -
 
