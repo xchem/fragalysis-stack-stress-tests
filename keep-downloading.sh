@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Usage: nohup ./keep-downloading.sh [concurrency] &
+# Usage: nohup ./keep-downloading.sh [concurrency] [environment] &
 #
 # A script that keeps calling 'main.py' with 8 (default) downloads,
 # waiting until the next 20-minute boundary between each attempt.
@@ -18,7 +18,8 @@
 # You can add --debug to see request/response debug (a lot of output is generated)
 
 concurrency="${1:-8}"
-cmd="uv run main.py ${concurrency} lb32627-66 A71EV2A production"
+environment="${2:-production}"
+cmd="uv run main.py ${concurrency} lb32627-66 A71EV2A ${environment}"
 log="keep-downloading.log"
 # The default download directory.
 # Be VERY careful - we wipe it so it MUST be local.
