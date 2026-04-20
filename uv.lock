@@ -1548,7 +1548,7 @@ wheels = [
 
 [[package]]
 name = "xchem-fragalysis"
-version = "1.4.8"
+version = "1.4.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "gemmi" },
@@ -1559,9 +1559,9 @@ dependencies = [
     { name = "rdkit" },
     { name = "xchem-molparse" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/df/22/3f866094e611edec501c86bd3d5581dfa67d8f49ffcc01fa1e84f493d4a3/xchem_fragalysis-1.4.8.tar.gz", hash = "sha256:3acb0a310bf4a76cf169b577bab07fcfba718bbb6bc44f8caf53518e045ea138", size = 25999, upload-time = "2026-04-20T13:01:20.205Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/02/db/29ee641fd381f72bf2dabb75af971561cd52c790858586b7ada3bf6fc2b8/xchem_fragalysis-1.4.10.tar.gz", hash = "sha256:3632aac0051b757aa63be71bfc7008ccf7fe17da3ad6ed60c25219cfda45d166", size = 25935, upload-time = "2026-04-20T14:14:40.482Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8b/f2/79fb34db292751bf0b8b0636f19cc2a1d11b582615ad943e8b5ea31fa835/xchem_fragalysis-1.4.8-py3-none-any.whl", hash = "sha256:1ba177e5d176070f5ef0cbb18c27163f1553b43256eabe3d47bfb49a22662720", size = 29934, upload-time = "2026-04-20T13:01:18.627Z" },
+    { url = "https://files.pythonhosted.org/packages/f6/ef/625315f8a553163325328ae3b4ee344b44965de14ae70a3e4d5ae2756c0e/xchem_fragalysis-1.4.10-py3-none-any.whl", hash = "sha256:3f7a3f5a6c6085cb31b095652dc16db221b190c77330a1175c73d9b40616b729", size = 29879, upload-time = "2026-04-20T14:14:39.251Z" },
 ]
 
 [[package]]
@@ -1581,7 +1581,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "typer", specifier = ">=0.24.1" },
-    { name = "xchem-fragalysis", specifier = ">=1.4.8,<2" },
+    { name = "xchem-fragalysis", specifier = ">=1.4.10,<2" },
 ]
 
 [package.metadata.requires-dev]
