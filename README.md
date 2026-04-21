@@ -64,18 +64,24 @@ ready to run a stress-test...
     pip install uv
     uv sync
 
-Then, you can continually run the default test (downloading 16 copies concurrently)...
+Then, you can continually run the default test and test production
+(downloading 16 copies concurrently)...
 
     export TTY_INTERACTIVE=0
     nohup ./keep-downloading.sh 16 &
+
+Or you can test the staging installation: -
+
+    export TTY_INTERACTIVE=0
+    nohup ./keep-downloading.sh 16 staging &
 
 And watch the output with: -
 
     tail -f keep-downloading.log
 
 >   You will need to make sure your local volume has sufficient space to accommodate
-    all the downloads you plan to test. A single copy of the default (`A71EV2A`),
-    which the download decompresses, will consume about **3.8G** of disk space.
+    all the downloads you plan to generate. A single copy of the default (`A71EV2A`)
+    will consume about **3.8G** of disk space on the client.
 
 ---
 
