@@ -45,6 +45,7 @@ sleep_until_next_20_minutes() {
   sleep ${secs_to_wait}
 }
 
+rm -f ${log}
 download=1
 sleep_until_next_20_minutes
 while true
