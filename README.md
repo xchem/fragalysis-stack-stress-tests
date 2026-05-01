@@ -26,12 +26,12 @@ Then, maybe, run something like the following, which (at the time of writing)
 initiates four downloads of `A71EV2A` from the staging stack, writing it to
 `/tmp/xchem-stress/01/A71EV2A.tar.gz`: -
 
-    uv run main.py 4
+    uv run main.py download 4
 
 You can display progressive download status information by adding `--verbose` and
 even debug the underlying requests (which use the urllib3 module) with `--debug`: -
 
-    uv run main.py 4 --verbose --debug
+    uv run main.py download 4 --verbose --debug
 
 ## Controlling the 'fancy stuff'
 Some of the underlying logic (in fragalysis) uses the [rich] library for rich text
@@ -41,7 +41,7 @@ confusing when it's logging is interleaved with rich.
 To disable _pretty_ things like progress reporting you can set `TTY_INTERACTIVE=0`
 when running a test, e.g.: -
 
-    TTY_INTERACTIVE=0 uv run main.py 4 --verbose
+    TTY_INTERACTIVE=0 uv run main.py download 4 --verbose
 
 >   The number of concurrent downloads might be limited because of your client's
     processing capability - if you're on a 4 core machine do not expect the best
@@ -83,7 +83,11 @@ And watch the output with: -
     all the downloads you plan to generate. A single copy of the default (`A71EV2A`)
     will consume about **3.8G** of disk space on the client.
 
----
+We also have an API stress test, one that simulates the first few calls typically made
+by the UI/user. You can run this on the staging stack with: -
+
+    export TTY_INTERACTIVE=0
+    nohup ./keep-sequencing.sh 25 fragalysis.xchem.diamond.ac.uk &
 
 [rich]: https://pypi.org/project/rich/
 [uv]: https://docs.astral.sh/uv/

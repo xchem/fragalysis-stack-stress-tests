@@ -19,7 +19,7 @@
 
 concurrency="${1:-8}"
 environment="${2:-production}"
-cmd="uv run main.py ${concurrency} lb32627-66 A71EV2A ${environment}"
+cmd="uv run main.py download ${concurrency} lb32627-66 A71EV2A ${environment}"
 log="keep-downloading.log"
 # The default download directory.
 # Be VERY careful - we wipe it so it MUST be local.

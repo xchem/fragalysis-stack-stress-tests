@@ -135,12 +135,21 @@ async def _run_one_runner(
         proc = await asyncio.create_subprocess_exec(
             *args,
             stdout=asyncio.subprocess.DEVNULL,
-            stderr=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.PIPE,
         )
-        rc: int = await proc.wait()
+        _, stderr_bytes = await proc.communicate()
+        rc: int = proc.returncode or 0
         elapsed_ms: float = (time.perf_counter() - start) * 1000
 
-        suffix: str = "" if rc == 0 else f" FAIL rc={rc}"
+        if rc == 0:
+            suffix: str = ""
+        else:
+            reason: str = (
+                stderr_bytes.decode(errors="replace").strip().replace("\n", " | ")
+            )
+            if len(reason) > 200:
+                reason = reason[:197] + "..."
+            suffix = f" FAIL rc={rc} {reason}" if reason else f" FAIL rc={rc}"
         print(
             f"[{runner}] harIndex={har_index} {method} {path}"
             f" ({elapsed_ms:.0f}ms){suffix}"

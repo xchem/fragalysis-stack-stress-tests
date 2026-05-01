@@ -10,7 +10,7 @@
 # we do our best to synchronise sequences across multiple machines.
 
 concurrency="${1:-8}"
-host="${2:-fragalysis.xchem.diamond.ac.uk}"
+host="${2:-fragalysis.diamond.ac.uk}"
 cmd="uv run main.py sequence ${concurrency} ${host}"
 log="keep-sequencing.log"
 
