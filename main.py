@@ -125,7 +125,7 @@ async def _run_one_runner(
             http_bin,
             "--ignore-stdin",
             "--check-status",
-            "--timeout=120",
+            "--timeout=300",
             method,
             url,
             *(f"{k}=={v}" for k, v in query_params.items()),
