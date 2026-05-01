@@ -1,0 +1,397 @@
+{
+  "sourceHar": "fragalysis.xchem.diamond.ac.uk.har",
+  "baseUrl": "https://fragalysis.xchem.diamond.ac.uk",
+  "capturedPage": "https://fragalysis.xchem.diamond.ac.uk/viewer/react/preview/target/A71EV2A/tas/lb32627-66",
+  "capturedInputs": {
+    "targetSlug": "A71EV2A",
+    "targetId": "31",
+    "tasSnapshot": "lb32627-66",
+    "uploadPrefix": "A71EV2A_lb32627-49",
+    "uploadNumber": "upload_1",
+    "computedSet": "51",
+    "compoundSet": "51",
+    "selectedCrystal": "A71EV2A-x0207",
+    "referenceModel": "A71_2A_x0090_ref_7_monomer",
+    "selectedLigandToken": "A71EV2A-x0911+A+147+x+1"
+  },
+  "notes": [
+    "All captured Fragalysis API/data requests are GET requests.",
+    "The HAR contains no request cookies and no POST request bodies.",
+    "Third-party/static assets such as RDKit, JSME, Bootstrap, Google Fonts, and the compiled frontend bundle are excluded from this replay list."
+  ],
+  "headers": {
+    "document": {
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "cache-control": "max-age=0",
+      "priority": "u=0, i",
+      "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "document",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-site": "same-origin",
+      "sec-fetch-user": "?1",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+    },
+    "api": {
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "priority": "u=1, i",
+      "referer": "https://fragalysis.xchem.diamond.ac.uk/viewer/react/preview/target/A71EV2A/tas/lb32627-66",
+      "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "x-csrftoken": "Y14pxyxiyp1nsDUfaMCIAmz4gcKB78Pi",
+      "x-requested-with": "XMLHttpRequest"
+    },
+    "media": {
+      "referer": "https://fragalysis.xchem.diamond.ac.uk/viewer/react/preview/target/A71EV2A/tas/lb32627-66",
+      "sec-ch-ua": "\"Google Chrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+    }
+  },
+  "calls": [
+    {
+      "harIndex": 1,
+      "kind": "document",
+      "method": "GET",
+      "path": "/viewer/react/preview/target/A71EV2A/tas/lb32627-66",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "document",
+      "capturedStatus": 200,
+      "capturedTimeMs": 102,
+      "capturedResponseSizeBytes": 1171
+    },
+    {
+      "harIndex": 6,
+      "kind": "api",
+      "method": "GET",
+      "path": "/viewer/service_state/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 65,
+      "capturedResponseSizeBytes": 338,
+      "capturedResult": "object service_states"
+    },
+    {
+      "harIndex": 7,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/site_observation_quality/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 737,
+      "capturedResponseSizeBytes": 803853,
+      "capturedResult": "count 3550"
+    },
+    {
+      "harIndex": 8,
+      "kind": "api",
+      "method": "GET",
+      "path": "/version/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 61,
+      "capturedResponseSizeBytes": 102,
+      "capturedResult": "object version"
+    },
+    {
+      "harIndex": 9,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/projects/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 84,
+      "capturedResponseSizeBytes": 1827,
+      "capturedResult": "count 10"
+    },
+    {
+      "harIndex": 10,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/targets/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 737,
+      "capturedResponseSizeBytes": 6553,
+      "capturedResult": "count 12"
+    },
+    {
+      "harIndex": 14,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/target_experiment_uploads/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 120,
+      "capturedResponseSizeBytes": 34945,
+      "capturedResult": "count 38"
+    },
+    {
+      "harIndex": 15,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/targets/",
+      "queryParams": {
+        "id": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 130,
+      "capturedResponseSizeBytes": 580,
+      "capturedResult": "count 1"
+    },
+    {
+      "harIndex": 16,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/siteobservation_tag/",
+      "queryParams": {
+        "target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 2475,
+      "capturedResponseSizeBytes": 214780,
+      "capturedResult": "count 218"
+    },
+    {
+      "harIndex": 17,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/compound-sets/",
+      "queryParams": {
+        "target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 157,
+      "capturedResponseSizeBytes": 7062,
+      "capturedResult": "count 1"
+    },
+    {
+      "harIndex": 18,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/snapshots/",
+      "queryParams": {
+        "target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 438,
+      "capturedResponseSizeBytes": 71485,
+      "capturedResult": "count 76"
+    },
+    {
+      "harIndex": 19,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/compound-mols-scores/",
+      "queryParams": {
+        "computed_set": "51"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 14960,
+      "capturedResponseSizeBytes": 2665206,
+      "capturedResult": "count 1283"
+    },
+    {
+      "harIndex": 20,
+      "kind": "media",
+      "method": "GET",
+      "path": "/media/target_loader_data/A71EV2A_lb32627-49/upload_1/crystallographic_files/A71_2A_x0090_ref_7_monomer/A71_2A_x0090_ref_7_monomer.pdb",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "media",
+      "capturedStatus": 200,
+      "capturedTimeMs": 1,
+      "capturedResponseSizeBytes": 114616
+    },
+    {
+      "harIndex": 21,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/compound-identifiers/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 74,
+      "capturedResponseSizeBytes": 52,
+      "capturedResult": "count 0"
+    },
+    {
+      "harIndex": 22,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/assay_data_property/",
+      "queryParams": {
+        "target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 89,
+      "capturedResponseSizeBytes": 52,
+      "capturedResult": "count 0"
+    },
+    {
+      "harIndex": 23,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/activity_data/",
+      "queryParams": {
+        "result_upload__target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 71,
+      "capturedResponseSizeBytes": 52,
+      "capturedResult": "count 0"
+    },
+    {
+      "harIndex": 24,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/tag_category/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 73,
+      "capturedResponseSizeBytes": 677,
+      "capturedResult": "count 9"
+    },
+    {
+      "harIndex": 25,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/site_observations/",
+      "queryParams": {
+        "target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 2002,
+      "capturedResponseSizeBytes": 1914452,
+      "capturedResult": "count 701"
+    },
+    {
+      "harIndex": 26,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/poses/",
+      "queryParams": {
+        "target": "31"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 2802,
+      "capturedResponseSizeBytes": 101433,
+      "capturedResult": "count 569"
+    },
+    {
+      "harIndex": 29,
+      "kind": "media",
+      "method": "GET",
+      "path": "/media/target_loader_data/A71EV2A_lb32627-49/upload_1/aligned_files/A71EV2A-x0207/A71EV2A-x0207_A_151_x_1_A71EV2A-x0911%2BA%2B147%2Bx%2B1_ligand.mol",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "media",
+      "capturedStatus": 200,
+      "capturedTimeMs": 1,
+      "capturedResponseSizeBytes": 1377,
+      "duplicateOfHarIndex": 28
+    },
+    {
+      "harIndex": 34,
+      "kind": "media",
+      "method": "GET",
+      "path": "/media/target_loader_data/A71EV2A_lb32627-49/upload_1/aligned_files/A71EV2A-x0207/A71EV2A-x0207_A_151_x_1_A71EV2A-x0911%2BA%2B147%2Bx%2B1_apo.pdb",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "media",
+      "capturedStatus": 200,
+      "capturedTimeMs": 2,
+      "capturedResponseSizeBytes": 184694
+    },
+    {
+      "harIndex": 35,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/compound-molecules/",
+      "queryParams": {
+        "compound_set": "51"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 13351,
+      "capturedResponseSizeBytes": 6958232,
+      "capturedResult": "count 3175"
+    },
+    {
+      "harIndex": 36,
+      "kind": "api",
+      "method": "GET",
+      "path": "/api/compound-scores/",
+      "queryParams": {
+        "computed_set": "51"
+      },
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 76,
+      "capturedResponseSizeBytes": 485,
+      "capturedResult": "count 5"
+    },
+    {
+      "harIndex": 37,
+      "kind": "api",
+      "method": "GET",
+      "path": "/viewer/service_state/",
+      "queryParams": {},
+      "body": null,
+      "headersRef": "api",
+      "capturedStatus": 200,
+      "capturedTimeMs": 65,
+      "capturedResponseSizeBytes": 338,
+      "capturedResult": "object service_states",
+      "duplicateOfHarIndex": 6
+    }
+  ]
+}

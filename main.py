@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import asyncio
 import datetime
+import json
 from multiprocessing import Process
 import os
 import shutil
@@ -103,6 +105,94 @@ def download(
     # Wait until all downloads are done...
     for p in processes:
         p.join()
+
+    now = datetime.datetime.now()
+    elapsed_s: int = int(time.time() - start_time_s)
+    print(f"{now.strftime('%Y-%m-%d %H:%M')} Elapsed(S): {elapsed_s}")
+
+
+async def _run_one_runner(
+    runner: int, http_bin: str, host: str, calls: list[dict]
+) -> None:
+    for call in calls:
+        method: str = call["method"]
+        path: str = call["path"]
+        har_index: int = call["harIndex"]
+        query_params: dict = call.get("queryParams") or {}
+
+        url: str = f"https://{host}{path}"
+        args: list[str] = [
+            http_bin,
+            "--ignore-stdin",
+            "--check-status",
+            "--timeout=120",
+            method,
+            url,
+            *(f"{k}=={v}" for k, v in query_params.items()),
+        ]
+
+        start: float = time.perf_counter()
+        proc = await asyncio.create_subprocess_exec(
+            *args,
+            stdout=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.DEVNULL,
+        )
+        rc: int = await proc.wait()
+        elapsed_ms: float = (time.perf_counter() - start) * 1000
+
+        suffix: str = "" if rc == 0 else f" FAIL rc={rc}"
+        print(
+            f"[{runner}] harIndex={har_index} {method} {path}"
+            f" ({elapsed_ms:.0f}ms){suffix}"
+        )
+
+
+async def _run_sequences(concurrency: int, host: str, file: str) -> None:
+    http_bin: str | None = shutil.which("http")
+    if http_bin is None:
+        typer.echo(
+            "The 'http' (httpie) binary was not found on PATH. "
+            "Run 'uv sync' to install it.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    with open(file) as f:
+        data = json.load(f)
+    calls: list[dict] = data["calls"]
+
+    await asyncio.gather(
+        *(_run_one_runner(i + 1, http_bin, host, calls) for i in range(concurrency))
+    )
+
+
+@app.command()
+def sequence(
+    concurrency: Annotated[
+        int, typer.Argument(help="Number of concurrent sequences")
+    ] = 1,
+    host: Annotated[
+        str, typer.Argument(help="The Fragalysis host to call")
+    ] = "fragalysis.xchem.diamond.ac.uk",
+    file: Annotated[
+        str, typer.Argument(help="Path to a JSON file describing the call sequence")
+    ] = "test-data/api-sequence.json",
+) -> None:
+    """Replay an API call sequence stress testing
+
+    Reads a JSON file containing a list of 'calls' (each with harIndex,
+    method, path, queryParams) and replays them against the given host
+    using httpie. With concurrency > 1, that number of full sequences
+    runs in parallel; calls within a single sequence run serially."""
+
+    now: datetime.datetime = datetime.datetime.now()
+    print(
+        f"{now.strftime('%Y-%m-%d %H:%M')} Starting sequence"
+        f" (concurrency={concurrency} host={host} file={file})..."
+    )
+
+    start_time_s: float = time.time()
+    asyncio.run(_run_sequences(concurrency, host, file))
 
     now = datetime.datetime.now()
     elapsed_s: int = int(time.time() - start_time_s)
