@@ -22,7 +22,7 @@ def download(
     concurrency: Annotated[
         int, typer.Argument(help="Number of concurrent processes")
     ] = 1,
-    tas: Annotated[str, typer.Argument(help="A Target Access String")] = "lb32627-66",
+    tas: Annotated[str, typer.Argument(help="A Target Access String")] = "lb42888-1",
     target: Annotated[str, typer.Argument(help="The name of the Target")] = "A71EV2A",
     stack: Annotated[
         str,
